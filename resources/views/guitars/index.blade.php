@@ -16,9 +16,11 @@
                             <button class="btn btn-warning mx-2 ">
                                 <a href="{{ route('guitars.edit', ['guitar' => $guitar['id']]) }}">Edit</a>
                             </button>
-                            <button class="btn btn-danger mx-2">
-                                <a href="{{ route('guitars.destroy', ['guitar' => $guitar['id']]) }}">delete</a>
-                            </button>
+                            <form method="POST" action="{{ url('/guitars' . '/' . $guitar->id) }}">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
                         </div>
                     </ul>
 

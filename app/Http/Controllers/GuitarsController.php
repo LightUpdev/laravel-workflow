@@ -101,12 +101,12 @@ class GuitarsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Request $request, $guitar)
+    public function destroy($guitar)
     {
         //
         $guitars = Guitar::findOrFail($guitar);
         $guitars->delete();
 
-        $request->session()->$request->flash('message', 'Guitar deleted');
+        return redirect()->route("guitars.index");
     }
 }
